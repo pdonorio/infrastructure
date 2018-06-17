@@ -1,5 +1,5 @@
 
-# rancher
+# rancher
 
 You are going to create at first a rancher node out of a master node.
 
