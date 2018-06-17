@@ -1,12 +1,13 @@
 
-# my self-hosted infrastructure
+A step-by-step guide to create an infrastructure for your company.
 
-A step-by-step guide to create an infrastructure for your company, based on the following hyphotesis:
+## pre-requisites
 
-1. Self hosted nodes (virtual machines) on [digitalocean]().
-2. All nodes run docker containers and all services are containers
-3. Containers are managed and orchestrated with [rancher]().
-4. The main databases are outsourced to on-premise managed external services.
+This is based on the following hyphotesis:
+- self hosted nodes (virtual machines) on [digitalocean](http://digitalocean.com/).
+- all nodes run docker containers and all services are containers
+- containers are managed and orchestrated with [rancher](https://rancher.com/docs/rancher/v1.6/en/).
+- the main databases are outsourced to on-premise managed external services.
 
 
 ## nodes
@@ -21,6 +22,8 @@ Master duties:
 All other nodes are slaves and have rancher agents running to distribute the load of the services scaling containers.
 
 ## creation
+
+Note: please have a look to the [base setup](docs/base.md) you need to continue testing these documentation.
 
 List of nodes to be created:
 
