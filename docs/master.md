@@ -101,14 +101,19 @@ docker logs -f $(docker ps -n 1 -q)
 
 ```
 
-NOTE: at the time of writing I get an error:
+### issues
+
+I was stuck to this error:
 ```
 QueryException: Table 'cattle.setting' doesn't exist
 ```
 It seems related to slow performances in network or the db instance, see [this comment](https://github.com/rancher/rancher/issues/8962#issuecomment-365288044).
 
-I will have to retry with a bigger instance of MySQL than `db.t2.micro`...
+I solved without switching to a more performant size of RDS, but instead moving the db instance to the same region of the DO host.
+
 
 ## bastion
 
 This node will be used to access digitalocean and rancher accounts for cronjobs and scripts.
+
+**TO BE COMPLETED**
