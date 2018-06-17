@@ -35,7 +35,8 @@ Dedicated sections for each step:
 Missing points:
 
 - [ ] separate the ssh bastion from the master/rancher
+- [ ] install ansible/terraform on the bastion as a container
+- [ ] move the instructions to: 
+    + ansible if [this PR](https://github.com/ansible/ansible/pull/33984#issuecomment-392610231) is merged
+    + terraform otherwise, see their [docs](https://www.terraform.io/docs/providers/do/index.html)
 - [ ] evaluate other drawbacks
-- [ ] install ansible on the bastion as a container
-- [ ] move the instructions to ansible if [this PR](https://github.com/ansible/ansible/pull/33984#issuecomment-392610231) is merged
-

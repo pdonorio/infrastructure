@@ -48,8 +48,15 @@ doctl compute droplet delete master01
 
 ## rancher stack
 
-Swarm mode
-(to be completed)
+To launch the rancher stack we want to use some outsourced database instead of one simple container with everything inside. This action would ensure easy upgrades of the rancher server and no damage if the containers crashes for any reason. A separated MySQL container would be fine too: but then backups and reliability become an issue.
+
+To configure rancher to use an external servers with relative credentials we want to ensure better-than-average security and avoid making credentials available as environment variables. More on this topic [in this post](https://medium.com/lucjuggery/from-env-variables-to-docker-secrets-bc8802cacdfd).
+
+To use secrets we need the `swarm mode` active on the docker engine.
+Also secrets cannot be passed directly to the container (they are files, not variables), so we need to override the rancher container entrypoint to inject the secrets.
+
+Here are the instructions to work all of this out:
+
 
 ```bash
 # access the node via ssh
@@ -78,6 +85,7 @@ cd infrastructure/stacks/rancher
 vi .env # if you wish to change some parameters see the config file
 
 # TODO: to be completed
+docker stack deploy -c stack.yml rancher
 
 ```
 

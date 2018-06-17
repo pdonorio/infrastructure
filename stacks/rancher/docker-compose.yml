@@ -1,5 +1,26 @@
 
-version: '2'
+version: '3.3'
+
+secrets:
+  MYSQL_HOST:
+    external: true
+  MYSQL_MYDB:
+    external: true
+  MYSQL_USER:
+    external: true
+  MYSQL_PASS:
+    external: true
+
 services:
   cattle:
-    image: rancher/server
+    image: rancher/server:v1.6.18
+    command: startup
+    volumes:
+      - ./entrypoint.sh:/usr/local/bin/startup
+    secrets:
+      — MYSQL_HOST
+      - MYSQL_MYDB
+      - MYSQL_USER
+      - MYSQL_PASS
+    ports:
+      - "80:8080"
