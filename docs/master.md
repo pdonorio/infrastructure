@@ -91,9 +91,23 @@ vi .env
 
 # launch the stack
 docker stack deploy -c docker-compose.yml rancher
+# check existence
+docker stack ls
+docker stack services rancher
+# verify the services processed
+docker stack ps rancher
+# logs
+docker logs -f $(docker ps -n 1 -q)
 
 ```
 
+NOTE: at the time of writing I get an error:
+```
+QueryException: Table 'cattle.setting' doesn't exist
+```
+It seems related to slow performances in network or the db instance, see [this comment](https://github.com/rancher/rancher/issues/8962#issuecomment-365288044).
+
+I will have to retry with a bigger instance of MySQL than `db.t2.micro`...
 
 ## bastion
 

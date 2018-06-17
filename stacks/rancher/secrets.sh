@@ -17,3 +17,4 @@ do
     echo $varvalue > $tmpfile
     docker secret create $varname $tmpfile
 done
+rm -f $tmpfile
