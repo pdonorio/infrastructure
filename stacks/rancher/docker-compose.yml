@@ -14,11 +14,13 @@ secrets:
 services:
   cattle:
     image: rancher/server:v1.6.18
-    command: startup
+    entrypoint: startup
+    # deploy:
+    #   replicas: 1
     volumes:
       - ./entrypoint.sh:/usr/local/bin/startup
     secrets:
-      — MYSQL_HOST
+      - MYSQL_HOST
       - MYSQL_MYDB
       - MYSQL_USER
       - MYSQL_PASS

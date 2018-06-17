@@ -79,13 +79,18 @@ useradd -m -d /home/$MYUSER \
     && usermod -aG docker $MYUSER \
     && su - $MYUSER
 
-# deploy the stack
+# prepare the code
 git clone https://github.com/pdonorio/infrastructure.git
 cd infrastructure/stacks/rancher
-vi .env # if you wish to change some parameters see the config file
 
-# TODO: to be completed
-docker stack deploy -c stack.yml rancher
+# set variables for your outside database
+vi .env
+
+# generate the secrets in the swarm from the .env file
+./secrets.sh
+
+# launch the stack
+docker stack deploy -c docker-compose.yml rancher
 
 ```
 
