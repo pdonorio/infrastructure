@@ -21,13 +21,21 @@ Master duties:
 
 All other nodes are slaves and have rancher agents running to distribute the load of the services scaling containers.
 
-## creation
+## use it
 
-Note: please have a look to the [base setup](docs/base.md) you need to continue testing these documentation.
+Dedicated sections for each step:
 
-List of nodes to be created:
+1. see the [base setup](docs/base.md) you need
+2. create a master/rancher [node](docs/master.md)
+3. create a git server [node](docs/gitlab.md) for your company's code
+4. work in progress
 
-- master/rancher [node](docs/master.md)
-- gitlab server [node](docs/gitlab.md)
-- ...
+## to be completed
+
+Missing points:
+
+- [ ] separate the ssh bastion from the master/rancher
+- [ ] evaluate other drawbacks
+- [ ] install ansible on the bastion as a container
+- [ ] move the instructions to ansible if [this PR](https://github.com/ansible/ansible/pull/33984#issuecomment-392610231) is merged
 
