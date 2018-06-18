@@ -46,7 +46,7 @@ doctl compute ssh-key list
 doctl compute droplet delete master01
 ```
 
-## rancher stack
+## stack
 
 To launch the rancher stack we want to use some outsourced database instead of one simple container with everything inside. This action would ensure easy upgrades of the rancher server and no damage if the containers crashes for any reason. A separated MySQL container would be fine too: but then backups and reliability become an issue.
 
@@ -103,7 +103,7 @@ docker logs -f $(docker ps -n 1 -q)
 
 ### issues
 
-I was stuck to this error:
+1. I was stuck to this error:
 ```
 QueryException: Table 'cattle.setting' doesn't exist
 ```
@@ -111,6 +111,20 @@ It seems related to slow performances in network or the db instance, see [this c
 
 I solved without switching to a more performant size of RDS, but instead moving the db instance to the same region of the DO host.
 
+2. SSL is not yet enabled
+
+It seems you have to [do complex things](https://rancher.com/docs/rancher/v1.6/en/installing-rancher/installing-server/#http-proxy) to use the rancher API, catalog and integration with the registry with SSL on this server. I'm skipping this for now.
+
+## configuring
+
+To be completed.
+Steps to be done programmatically via API:
+
+- Create a token
+- Switch to github accounting
+- Add a list of github accounts
+- Create an env for the rancher node 
+- Request an host to add and launch the agent command
 
 ## bastion
 
