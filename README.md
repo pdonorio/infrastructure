@@ -32,11 +32,13 @@ Dedicated sections for each step:
 
 ## to be completed
 
-Missing points:
+higher priority:
+- [ ] mysql backup in a cronjob into the master volume
+- [ ] enable secrets 'service' in each rancher environment
 
+lower priority:
 - [ ] separate the ssh bastion from the master/rancher
 - [ ] install ansible/terraform on the bastion as a container
 - [ ] move the instructions to: 
     + ansible if [this PR](https://github.com/ansible/ansible/pull/33984#issuecomment-392610231) is merged
     + terraform otherwise, see their [docs](https://www.terraform.io/docs/providers/do/index.html)
-- [ ] evaluate other drawbacks
