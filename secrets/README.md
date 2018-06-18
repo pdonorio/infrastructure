@@ -84,8 +84,8 @@ env_value2 = {{getv "/test2"}}
 
 ```bash
 # variables used by confd have to be uppercase
-export TEST1="{{DOCKER-SECRET:test1}}"
-export TEST2="{{DOCKER-SECRET:test2}}"
+export TEST1="\{\{DOCKER-SECRET:test1\}\}"
+export TEST2="\{\{DOCKER-SECRET:test2\}\}"
 # load from secrets
 source expand_secrets
 # use in config
