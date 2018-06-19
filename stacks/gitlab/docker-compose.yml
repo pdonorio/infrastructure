@@ -2,16 +2,22 @@
 version: '2'
 services:
   web:
-    image: gitlab/gitlab-ce:$GITLAB_VERSION
+    # image: gitlab/gitlab-ce:$GITLAB_VERSION
+    image: gitlab/wrapped
     hostname: $GITLAB_HOST
     environment:
+      GITLAB_HOST: $GITLAB_HOST
+      GITLAB_DATABASE_ADAPTER: postgresql
+      GITLAB_DATABASE_PORT: 5432
+      GITLAB_DATABASE_ENCODING: utf8
+      GITLAB_DATABASE_DATABASE: gitlabdb
       GITLAB_OMNIBUS_CONFIG: external_url 'https://$GITLAB_HOST'
     volumes:
-    - $VOLUME_MOUNT_POINT/gitlab/config:/etc/gitlab
-    - $VOLUME_MOUNT_POINT/gitlab/logs:/var/log/gitlab
-    - $VOLUME_MOUNT_POINT/gitlab/data:/var/opt/gitlab
+    - /mnt/$VOLUME_NAME/gitlab/config:/etc/gitlab
+    - /mnt/$VOLUME_NAME/gitlab/logs:/var/log/gitlab
+    - /mnt/$VOLUME_NAME/gitlab/data:/var/opt/gitlab
     ports:
     - 80:80/tcp
     - 443:443/tcp
-    - 2222:22/tcp
-    # NOTE: 22 would clash with the normal host ssh
+    - 2222:22/tcp # NOTE: 22 would clash with the normal host ssh
+  # ADD REDIS

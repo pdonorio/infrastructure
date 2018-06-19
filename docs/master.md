@@ -117,8 +117,7 @@ It seems you have to [do complex things](https://rancher.com/docs/rancher/v1.6/e
 
 ## configuring
 
-To be completed.
-Steps to be done programmatically via API:
+FIXME: Steps to be done programmatically via rancher API
 
 - Create a token
 - Switch to github accounting
