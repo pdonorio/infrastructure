@@ -1,0 +1,7 @@
+
+version: '3'
+services:
+  mybuild:
+    build: ../../builds/gitlab
+    image: local/gitlab:wrapped
+    command: sleep 1234567890

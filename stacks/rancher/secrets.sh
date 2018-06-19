@@ -14,7 +14,8 @@ for element in `cat .env`;
 do
     varname=$(echo $element | cut -d "=" -f 1)
     varvalue=$(echo $element | cut -d "=" -f 2)
-    echo $varvalue > $tmpfile
-    docker secret create $varname $tmpfile
+    # echo $varvalue > $tmpfile
+    # docker secret create $varname $tmpfile
+    echo $varvalue | docker secret create $varname $tmpfile
 done
 rm -f $tmpfile
