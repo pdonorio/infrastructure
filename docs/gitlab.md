@@ -13,6 +13,7 @@
 7. build the image with expand_secrets binary
 8. add redis to the stack
 9. deploy
+10. register, become admin, set invite only in "signup restrictions"
 
 
 ## inside the node
@@ -60,16 +61,18 @@ tar xvzf rancher*compose*tar.gz
 mv rancher-compose-v$compversion/rancher-compose /usr/local/bin/
 
 chmod +x /usr/local/bin/rancher*
+rancher config
+# follow the instructions
 
 ####################
 git clone https://github.com/pdonorio/infrastructure.git
-cd infrastructure/nodes/master01
-vi .rancher # edit the config
-source .rancher
+cd infrastructure/stacks/gitlab
 
-# cd stacks/gitlab
-# # fix the current variables
-# vi .env
-# source .env
+# set secrets and envs
+vi .env
+source .env
+vi .secrets
+./secrets.sh
+rancher stacks create gitlab
 
 ```
