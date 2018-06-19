@@ -11,4 +11,7 @@ echo "Connecting to: $DB_HOST"
 sleep 5
 
 ## GITLAB INIT
+cp /templates/gitlab.rb /etc/gitlab/
+more /etc/gitlab/*.rb
+sleep 5
 /assets/wrapper
