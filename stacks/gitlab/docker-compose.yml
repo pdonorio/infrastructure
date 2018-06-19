@@ -10,6 +10,12 @@ secrets:
     external: true
 
 services:
+
+  redis:
+    image: redis:4.0.9-alpine
+    # command:
+    #   - --loglevel warning
+
   web:
     # image: gitlab/gitlab-ce:$GITLAB_VERSION
     image: local/gitlab:wrapped
@@ -22,12 +28,15 @@ services:
       - GITLAB_DATABASE_PASSWORD
     environment:
       GITLAB_HOST: $GITLAB_HOST
+      # postgresql['enable'] = false
       GITLAB_OMNIBUS_CONFIG: external_url 'https://$GITLAB_HOST'
       ######################
-      GITLAB_DATABASE_ADAPTER: postgresql
-      GITLAB_DATABASE_PORT: 5432
-      GITLAB_DATABASE_ENCODING: utf8
-      GITLAB_DATABASE_DATABASE: gitlabdb
+      DB_ADAPTER: postgresql
+      DB_PORT: 5432
+      DB_ENCODING: utf8
+      DB_DATABASE: gitlabdb
+      # ######################
+      # REDIS_HOST: redis
       ######################
       # GITLAB_SMTP_ENABLE:
       # GITLAB_SMTP_ADDRESS:

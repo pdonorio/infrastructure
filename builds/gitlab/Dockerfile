@@ -6,4 +6,5 @@ RUN cd /usr/local/bin/ && \
     wget -O expand_secrets http://bit.ly/secrets_expand_script \
     && chmod +x entry expand_secrets
 
-CMD ['/usr/local/bin/entry']
+# ENTRYPOINT ["/bin/bash"]
+CMD /usr/local/bin/entry

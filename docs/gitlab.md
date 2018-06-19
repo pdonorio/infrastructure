@@ -73,6 +73,7 @@ vi .env
 source .env
 vi .secrets
 ./secrets.sh
-rancher stacks create gitlab
+# https://rancher.com/docs/rancher/v1.6/en/cli/variable-interpolation/
+rancher up -d
 
 ```
