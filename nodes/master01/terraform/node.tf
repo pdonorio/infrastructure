@@ -1,27 +1,27 @@
-resource "digitalocean_volume" "test_volume" {
-  region      = "lon1"           # TODO: Make it configurable
-  name        = "test-volume"    # TODO: c
-  size        = 20               # TODO: c
-  description = "Example volume" # TODO: c
+resource "digitalocean_volume" "master_volume" {
+  region      = "${var.region}"
+  name        = "${var.volume_name}"
+  size        = "${var.volume_size}"
+  description = "${var.volume_description}"
 }
 
-resource "digitalocean_droplet" "test_server" {
-  image              = "30970148"                                # TODO: c
-  name               = "test-server"                             # TODO: c
-  region             = "lon1"                                    # TODO: c
-  size               = "s-1vcpu-2gb"                             # TODO: c
-  backups            = false                                     # TODO: c
-  monitoring         = false                                     # TODO: c
-  ipv6               = false                                     # TODO: c
-  private_networking = false                                     # TODO: c
-  ssh_keys           = [21715247]                                # TODO: c
-  volume_ids         = ["${digitalocean_volume.test_volume.id}"]
+resource "digitalocean_droplet" "master_server" {
+  image              = "${var.droplet_image}"
+  name               = "${var.droplet_name}"
+  region             = "${var.region}"
+  size               = "${var.droplet_size}"
+  backups            = "${var.droplet_backups}"
+  monitoring         = "${var.droplet_monitoring}"
+  ipv6               = "${var.droplet_ipv6}"
+  private_networking = "${var.droplet_private_networking}"
+  ssh_keys           = "${var.droplet_ssh_keys}"
+  volume_ids         = ["${digitalocean_volume.master_volume.id}"]
 }
 
-resource "digitalocean_firewall" "test_firewall" {
-  name = "test-firewall" # TODO: c
+resource "digitalocean_firewall" "master_server_firewall" {
+  name = "${var.firewall_name}"
 
-  droplet_ids = ["${digitalocean_droplet.test_server.id}"]
+  droplet_ids = ["${digitalocean_droplet.master_server.id}"]
 
   inbound_rule = [
     {
@@ -56,6 +56,6 @@ resource "digitalocean_firewall" "test_firewall" {
       protocol              = "udp"
       port_range            = "1-65535"
       destination_addresses = ["0.0.0.0/0", "::/0"]
-    }
+    },
   ]
 }
