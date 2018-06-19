@@ -31,10 +31,12 @@ services:
       # postgresql['enable'] = false
       GITLAB_OMNIBUS_CONFIG: external_url 'https://$GITLAB_HOST'
       ######################
-      DB_ADAPTER: postgresql
-      DB_PORT: 5432
-      DB_ENCODING: utf8
-      DB_DATABASE: gitlabdb
+      # all variables: http://j.mp/2tjKh3v
+      # the sensitive ones are set in the docker entrypoint of the build
+      GITLAB_DATABASE_ADAPTER: postgresql
+      GITLAB_DATABASE_PORT: 5432
+      GITLAB_DATABASE_ENCODING: utf8
+      GITLAB_DATABASE_DATABASE: gitlabdb
       # ######################
       # REDIS_HOST: redis
       ######################

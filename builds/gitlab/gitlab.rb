@@ -1,7 +1,7 @@
 
 ################
 ## GitLab URL
-external_url 'https://${GITLAB_HOST}'
+# external_url 'https://${GITLAB_HOST}'
 
 ################
 ## GitLab PostgreSQL as AWS RDS service
