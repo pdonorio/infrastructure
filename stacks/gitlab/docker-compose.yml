@@ -13,6 +13,8 @@ services:
   web:
     # image: gitlab/gitlab-ce:$GITLAB_VERSION
     image: local/gitlab:wrapped
+    labels:
+      io.rancher.scheduler.affinity:host_label: service=gitlab
     hostname: $GITLAB_HOST
     secrets:
       - GITLAB_DATABASE_HOST
@@ -20,11 +22,25 @@ services:
       - GITLAB_DATABASE_PASSWORD
     environment:
       GITLAB_HOST: $GITLAB_HOST
+      GITLAB_OMNIBUS_CONFIG: external_url 'https://$GITLAB_HOST'
+      ######################
       GITLAB_DATABASE_ADAPTER: postgresql
       GITLAB_DATABASE_PORT: 5432
       GITLAB_DATABASE_ENCODING: utf8
       GITLAB_DATABASE_DATABASE: gitlabdb
-      GITLAB_OMNIBUS_CONFIG: external_url 'https://$GITLAB_HOST'
+      ######################
+      # GITLAB_SMTP_ENABLE:
+      # GITLAB_SMTP_ADDRESS:
+      # GITLAB_SMTP_PORT:
+      # GITLAB_SMTP_USER_NAME:
+      # GITLAB_SMTP_PASSWORD:
+      # GITLAB_SMTP_DOMAIN:
+      ######################
+      # GITLAB_EMAIL_ENABLED:
+      # GITLAB_EMAIL_FROM:
+      # GITLAB_EMAIL_DISPLAY_NAME:
+      # GITLAB_EMAIL_REPLY_TO:
+      # GITLAB_EMAIL_SUBJECT_SUFFIX:
     volumes:
     - /mnt/$VOLUME_NAME/gitlab/config:/etc/gitlab
     - /mnt/$VOLUME_NAME/gitlab/logs:/var/log/gitlab

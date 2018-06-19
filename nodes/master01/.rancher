@@ -1,0 +1,8 @@
+
+export RANCHER_ACCESS_KEY=aaa
+export RANCHER_SECRET_KEY=bbb
+export RANCHER_SERVER=cattle.yourdomain.com
+export RANCHER_URL=https://$RANCHER_SERVER/v1
+
+# export MACHINE_DRIVER=openstack
+# export OPENSTACK_AUTH_URL=
