@@ -48,7 +48,7 @@ variable "droplet_private_networking" {
 }
 
 variable "droplet_ssh_keys" {
-  default = [21715247]
+  default = []
 }
 
 # Firewall variables
