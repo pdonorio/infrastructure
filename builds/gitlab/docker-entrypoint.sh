@@ -34,10 +34,10 @@ echo "################" >> $file
 ## https://docs.gitlab.com/omnibus/settings/smtp.html
 echo "gitlab_rails['smtp_enable'] = true" >> $file
 echo "gitlab_rails['smtp_domain'] = '$GITLAB_SMTP_DOMAIN'" >> $file
-echo "gitlab_rails['smtp_address'] = 'GITLAB_SMTP_ADDRESS'" >> $file
+echo "gitlab_rails['smtp_address'] = '$GITLAB_SMTP_ADDRESS'" >> $file
 echo "gitlab_rails['smtp_port'] = $GITLAB_SMTP_PORT" >> $file
 echo "gitlab_rails['smtp_user_name'] = '$GITLAB_SMTP_USER_NAME'" >> $file
-echo "gitlab_rails['smtp_password'] = 'GITLAB_SMTP_USER_PASSWORD'" >> $file
+echo "gitlab_rails['smtp_password'] = '$GITLAB_SMTP_USER_PASSWORD'" >> $file
 echo "gitlab_rails['gitlab_email_from'] = '$GITLAB_EMAIL_FROM'" >> $file
 echo "gitlab_rails['gitlab_email_reply_to'] = '$GITLAB_EMAIL_REPLY_TO'" >> $file
 # echo "gitlab_rails['smtp_authentication'] = 'login'" >> $file
