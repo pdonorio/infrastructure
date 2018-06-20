@@ -3,6 +3,8 @@
 
 ## temporary list of steps
 
+NOTE: this has to be converted into more automatic steps
+
 0. create a gitlab env in rancher
 1. create a node and label with 'service=gitlab'
 2. create a volume and attach it 
@@ -67,13 +69,13 @@ rancher config
 ####################
 git clone https://github.com/pdonorio/infrastructure.git
 cd infrastructure/stacks/gitlab
+# IMPORTANT: set secrets and envs required to make it work
+vi .env .secrets
 
-# set secrets and envs
-vi .env
+####################
 source .env
-vi .secrets
+# based also on https://rancher.com/docs/rancher/v1.6/en/cli/variable-interpolation/
 ./secrets.sh
-# https://rancher.com/docs/rancher/v1.6/en/cli/variable-interpolation/
 rancher up -d
 
 ```

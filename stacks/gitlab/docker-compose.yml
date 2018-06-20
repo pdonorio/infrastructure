@@ -37,20 +37,19 @@ services:
       GITLAB_DATABASE_PORT: 5432
       GITLAB_DATABASE_ENCODING: utf8
       GITLAB_DATABASE_DATABASE: gitlabdb
-      # ######################
-      # REDIS_HOST: redis
       ######################
-      # GITLAB_SMTP_ENABLE:
-      # GITLAB_SMTP_ADDRESS:
-      # GITLAB_SMTP_PORT:
-      # GITLAB_SMTP_USER_NAME:
-      # GITLAB_SMTP_PASSWORD:
-      # GITLAB_SMTP_DOMAIN:
+      REDIS_HOST: redis
       ######################
+      GITLAB_SMTP_DOMAIN: $GITLAB_SMTP_DOMAIN
+      GITLAB_SMTP_ADDRESS: $GITLAB_SMTP_ADDRESS
+      GITLAB_SMTP_PORT: 465 # SSL
+      GITLAB_SMTP_USER_NAME: GITLAB_SMTP_USER_NAME
+      # GITLAB_SMTP_PASSWORD: #SECRET
+      ######################
+      GITLAB_EMAIL_FROM: git-noreply@$GITLAB_SMTP_DOMAIN
+      GITLAB_EMAIL_REPLY_TO: git@$GITLAB_SMTP_DOMAIN
       # GITLAB_EMAIL_ENABLED:
-      # GITLAB_EMAIL_FROM:
       # GITLAB_EMAIL_DISPLAY_NAME:
-      # GITLAB_EMAIL_REPLY_TO:
       # GITLAB_EMAIL_SUBJECT_SUFFIX:
     volumes:
     - /mnt/$VOLUME_NAME/gitlab/config:/etc/gitlab
