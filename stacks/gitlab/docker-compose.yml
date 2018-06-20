@@ -8,6 +8,8 @@ secrets:
     external: true
   GITLAB_DATABASE_PASSWORD:
     external: true
+  GITLAB_SMTP_USER_PASSWORD:
+    external: true
 
 services:
 
@@ -26,6 +28,7 @@ services:
       - GITLAB_DATABASE_HOST
       - GITLAB_DATABASE_USERNAME
       - GITLAB_DATABASE_PASSWORD
+      - GITLAB_SMTP_USER_PASSWORD
     environment:
       GITLAB_HOST: $GITLAB_HOST
       # postgresql['enable'] = false
