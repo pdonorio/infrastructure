@@ -8,6 +8,8 @@ export GITLAB_DATABASE_HOST="{{DOCKER-SECRET:GITLAB_DATABASE_HOST}}"
 export GITLAB_DATABASE_USERNAME="{{DOCKER-SECRET:GITLAB_DATABASE_USERNAME}}"
 export GITLAB_DATABASE_PASSWORD="{{DOCKER-SECRET:GITLAB_DATABASE_PASSWORD}}"
 export GITLAB_SMTP_USER_PASSWORD="{{DOCKER-SECRET:GITLAB_SMTP_USER_PASSWORD}}"
+export GITLAB_BACKUP_SPACE_KEY="{{DOCKER-SECRET:GITLAB_BACKUP_SPACE_KEY}}"
+export GITLAB_BACKUP_SPACE_SECRET="{{DOCKER-SECRET:GITLAB_BACKUP_SPACE_SECRET}}"
 source expand_secrets
 echo "Connecting to: $GITLAB_DATABASE_HOST"
 sleep 5
@@ -44,6 +46,15 @@ echo "gitlab_rails['gitlab_email_reply_to'] = '$GITLAB_EMAIL_REPLY_TO'" >> $file
 # echo "gitlab_rails['smtp_authentication'] = 'login'" >> $file
 # echo "gitlab_rails['smtp_enable_starttls_auto'] = true" >> $file
 # echo "gitlab_rails['smtp_openssl_verify_mode'] = 'peer'" >> $file
+
+echo "gitlab_rails['backup_upload_connection'] = {" >> $file
+echo "    'provider'              => 'AWS'," >> $file
+echo "    'region'                => 'ams3'," >> $file
+echo "    'aws_access_key_id'     => '$GITLAB_BACKUP_SPACE_KEY'," >> $file
+echo "    'aws_secret_access_key' => '$GITLAB_BACKUP_SPACE_SECRET'," >> $file
+echo "    'endpoint'              => 'https://ams3.digitaloceanspaces.com'" >> $file
+echo "}" >> $file
+echo "gitlab_rails['backup_upload_remote_directory'] = 'proof-gitlab-backups'"
 
 chmod 400 $file
 more /etc/gitlab/*.rb
