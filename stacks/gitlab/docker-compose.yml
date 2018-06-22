@@ -10,6 +10,10 @@ secrets:
     external: true
   GITLAB_SMTP_USER_PASSWORD:
     external: true
+  GITLAB_BACKUP_SPACE_KEY:
+    external: true
+  GITLAB_BACKUP_SPACE_SECRET:
+    external: true
 
 services:
 
@@ -29,6 +33,8 @@ services:
       - GITLAB_DATABASE_USERNAME
       - GITLAB_DATABASE_PASSWORD
       - GITLAB_SMTP_USER_PASSWORD
+      - GITLAB_BACKUP_SPACE_KEY
+      - GITLAB_BACKUP_SPACE_SECRET
     environment:
       GITLAB_HOST: $GITLAB_HOST
       # postgresql['enable'] = false
