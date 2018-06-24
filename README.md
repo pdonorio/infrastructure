@@ -32,6 +32,9 @@ Dedicated sections for each step:
 
 ## to be completed
 
+bugs:
+- [ ] smtp with non standard domain does not work
+
 higher priority:
 - [ ] mysql backup in a cronjob into the master volume
 - [ ] enable secrets 'service' in each rancher environment

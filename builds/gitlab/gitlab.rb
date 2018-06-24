@@ -5,6 +5,10 @@
 # gitlab_rails['redis_host'] = "redis"
 
 ################
+## SSH
+gitlab_rails['gitlab_shell_ssh_port'] = 2222
+
+################
 ## GitLab PostgreSQL as AWS RDS service
 postgresql['enable'] = false
 

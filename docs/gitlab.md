@@ -3,22 +3,21 @@
 
 ## temporary list of steps
 
-NOTE: this has to be converted into more automatic steps
+NOTE: this should to be converted into more automatic steps
 
 0. create a gitlab env in rancher
 1. create a node and label with 'service=gitlab'
 2. create a volume and attach it 
 3. add the host to rancher dedicated env
 4. add from catalog the secrets rancher service
-5. add the secrets needed 
-6. add email to domain and setup SMTP
-7. build the image with expand_secrets binary
-8. add redis to the stack
-9. deploy
-10. register, become admin, set invite only in "signup restrictions"
+5. set .env and .secrets
+6. deploy
+7. register, become admin, config, send invites
 
 
 ## inside the node
+
+If no automatic build of the image then we need to do it manually inside the node.
 
 ```bash
 # access the node via ssh
@@ -76,6 +75,21 @@ vi .env .secrets
 source .env
 # based also on https://rancher.com/docs/rancher/v1.6/en/cli/variable-interpolation/
 ./secrets.sh
-rancher up -d
+rancher up
+
+[...]
+# Watch the logs
+# CTRL+C to stop
 
 ```
+
+### issues
+
+SMTP has been impossible to setup.
+
+Some important links:
+
+- https://docs.gitlab.com/ee/administration/troubleshooting/debug.html
+- https://github.com/mikel/mail/issues/639#issuecomment-29016055
+- https://docs.gitlab.com/omnibus/settings/smtp.html#gmail
+
