@@ -75,10 +75,11 @@ vi .env .secrets
 source .env
 # based also on https://rancher.com/docs/rancher/v1.6/en/cli/variable-interpolation/
 ./secrets.sh
-rancher up
+rancher up -d
 
-[...]
 # Watch the logs
+rancher logs -f gitlab-web-1
+[...]
 # CTRL+C to stop
 
 ```
