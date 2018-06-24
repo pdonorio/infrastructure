@@ -50,7 +50,7 @@ services:
       GMAIL_SMTP_PORT: 587
       GITLAB_SMTP_USER_NAME: $GITLAB_SMTP_USER_NAME
       ######################
-      GITLAB_EMAIL_FROM: git-noreply@$GITLAB_SMTP_DOMAIN
+      GITLAB_EMAIL_FROM: $GITLAB_SMTP_USER_NAME
       GITLAB_EMAIL_REPLY_TO: $GITLAB_SMTP_USER_NAME
     volumes:
     - /mnt/$VOLUME_NAME/gitlab/config:/etc/gitlab
