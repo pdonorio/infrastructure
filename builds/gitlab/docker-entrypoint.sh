@@ -41,8 +41,8 @@ file="/etc/gitlab/gitlab.rb"
 
     ## https://docs.gitlab.com/omnibus/settings/smtp.html
     echo "gitlab_rails['smtp_enable'] = true" >> $file
-    echo "gitlab_rails['smtp_domain'] = '$GMAIL_SMTP_ADDRESS'" >> $file
-    echo "gitlab_rails['smtp_address'] = '$GMAIL_SMTP_ADDRESS'" >> $file
+    echo "gitlab_rails['smtp_domain'] = '$GMAIL_SMTP_DOMAIN'" >> $file
+    echo "gitlab_rails['smtp_address'] = '$GMAIL_SMTP_DOMAIN'" >> $file
     echo "gitlab_rails['smtp_port'] = $GMAIL_SMTP_PORT" >> $file
     echo "gitlab_rails['smtp_user_name'] = '$GITLAB_SMTP_USER_NAME'" >> $file
     echo "gitlab_rails['smtp_password'] = '$GITLAB_SMTP_USER_PASSWORD'" >> $file
