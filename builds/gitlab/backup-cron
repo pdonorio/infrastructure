@@ -1,0 +1,1 @@
+0 17 * * * root gitlab-rake gitlab:backup:create >> /var/log/gitlab-backup.log 2>&1

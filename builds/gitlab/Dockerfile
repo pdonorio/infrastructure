@@ -7,6 +7,7 @@ LABEL maintainer="Paolo D'Onorio De Meo <paolo@proofmedia.io>"
 VOLUME /templates/
 COPY gitlab.rb /templates/
 COPY docker-entrypoint.sh /usr/local/bin/entry
+COPY backup-cron /etc/cron.d/backup-cron
 RUN cd /usr/local/bin/ && \
     wget -O expand_secrets http://bit.ly/secrets_expand_script \
     && chmod +x entry expand_secrets
