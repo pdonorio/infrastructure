@@ -76,8 +76,12 @@ ufw disable
 export MYUSER=developer
 useradd -m -d /home/$MYUSER \
     -s /bin/bash -p ! $MYUSER \
-    && usermod -aG docker $MYUSER \
+    && yes proofmedia | passwd $MYUSER \
+    && usermod -aG docker,sudo $MYUSER \
     && su - $MYUSER
+
+
+# ADD SUDO?
 
 # prepare the code
 git clone https://github.com/pdonorio/infrastructure.git
