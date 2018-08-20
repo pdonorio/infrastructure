@@ -15,3 +15,9 @@ postgresql['enable'] = false
 ################
 ## GitLab Redis as outside container
 redis['enable'] = false
+
+### SSH ###
+
+gitlab_rails['gitlab_shell_ssh_port'] = 2222
+
+
