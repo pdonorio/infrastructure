@@ -63,7 +63,7 @@ file="/etc/gitlab/gitlab.rb"
     echo "    'aws_secret_access_key' => '$GITLAB_BACKUP_SPACE_SECRET'," >> $file
     echo "    'endpoint'              => 'https://ams3.digitaloceanspaces.com'" >> $file
     echo "}" >> $file
-    echo "gitlab_rails['backup_upload_remote_directory'] = '$GITLAB_BACKUP_SPACE_NAME'"
+    echo "gitlab_rails['backup_upload_remote_directory'] = '$GITLAB_BACKUP_SPACE_NAME'" >> $file
 
     chmod 400 $file
     more /etc/gitlab/*.rb

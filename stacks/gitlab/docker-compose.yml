@@ -46,6 +46,7 @@ services:
       GITLAB_DATABASE_PORT: 5432
       GITLAB_DATABASE_ENCODING: utf8
       GITLAB_DATABASE_DATABASE: gitlabdb
+      GITLAB_BACKUP_SPACE_NAME: ${GITLAB_BACKUP_SPACE_NAME}
       ######################
       REDIS_HOST: redis
       ######################

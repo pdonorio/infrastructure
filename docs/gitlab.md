@@ -84,6 +84,17 @@ rancher logs -f gitlab-web-1
 
 ```
 
+### quick restart
+
+Reconnect to slave node and build, then in master:
+
+```
+cd /home/developer/infrastructure/stacks/gitlab
+rancher rm gitlab
+source .env && rancher up -d
+rancher logs -f gitlab-web-1
+```
+
 ### issues
 
 SMTP has been impossible to setup.
